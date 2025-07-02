@@ -67,30 +67,7 @@ let progressTimeout;
 let pausedAt = 0;
 let animationDuration = 3000;
 
-// document.documentElement.style.setProperty('--animationDuration',`${animationDuration}ms`);
-
-// const swiper = new Swiper('.main-swiper', {
-//   loop: true,
-//   autoplay: {
-//     delay: animationDuration,
-//     disableOnInteraction: false,
-//   },
-//   pagination: {
-//     el: '.my-pagination',
-//     type: 'custom',
-//     renderCustom: function (swiper, current, total) {
-//       return `<span class="">${current}</span> / 
-//         <span>${total}</span>
-//         <div class="progress"><div class="bar"></div></div>
-//       `;
-//     },
-//   }
-// });
-
 const mainSwiper = new Swiper('.main-swiper', {
-    autoplay: {delay: animationDuration},
-    effect: 'fade',
-    loop: true,
     pagination: {
         el: '.pagination-progress',
         type: 'custom',
@@ -106,22 +83,23 @@ const mainSwiper = new Swiper('.main-swiper', {
 });
 
 let pagingSwiper = new Swiper(".main-swiper", {
+    autoplay: {delay: animationDuration},
+    effect: 'fade',
+    loop: true,
 	pagination: {
 		el: '.pagination-bullet',
 		type : 'bullets',
     clickable: true,
 	},
 });
-
-
-
-
+/*
 function resetProgressBar() {
     progressBar.style.animation = 'none';
     progressBar.offsetHeight;
     progressBar.style.animation = `progress ${animationDuration}ms linear`;
     progressTimeout = setTimeout(() => {}, animationDuration)
 }
+*/
 /*
 playBtn.addEventListener('click', () => {
     // progressBar.style.animationPlayState = 'running';
@@ -177,6 +155,22 @@ function countUp(selector, target, duration = 1500) {
   });
 
 /* 히스토리 */
+
+const history = gsap.timeline({
+    
+  scrollTrigger: {
+        trigger: '.history',
+        start: 'top 40%'
+    }
+});
+history.from('.history li:nth-child(1)', {opacity: 0, x: 1000, duration: 0.3})    
+        .from('.history li:nth-child(2)', {opacity: 0, x: 1000, duration: 0.3}) 
+        .from('.history li:nth-child(3)', {opacity: 0, x: 1000, duration: 0.3}) 
+        .from('.history li:nth-child(4)', {opacity: 0, x: 1000, duration: 0.3}) 
+        .from('.history li:nth-child(5)', {opacity: 0, x: 1000, duration: 0.3}) 
+        .from('.history li:nth-child(6)', {opacity: 0, x: 1000, duration: 0.3}) 
+    
+
 /* 브랜드 */
 
 
@@ -184,13 +178,14 @@ const brand = gsap.utils.toArray('.brand-list');
 
 brand.forEach(brand => {
     gsap.from(brand, {
-        y: 100, opacity: 0, delay: 1.5, duration: 1,
+        y: 100, opacity: 0, delay: 1, duration: 0.5,
         scrollTrigger: {
-            trigger: 'brand-list',
+            trigger: '.brand .container',
             start: 'top 30%',
         }
     })
 });
+
 
 
 
@@ -230,14 +225,17 @@ vis3.from('.way-1p img', {scale: 0.95,opacity: 0})
 
 /* 뉴스 */
 
-gsap.from('.news-list', {
-    opacity: 0, x: 1000,
-    scrollTrigger: {
-      trigger: '.news',
-      start: 'top 40%',
-      // markers: true
+
+
+const news = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.news',
+        start: 'top 40%'
     }
 });
+news.from('.news-list li:nth-child(1)', {opacity: 0, x: 1000, duration: 0.3})    
+    .from('.news-list li:nth-child(2)', {opacity: 0, x: 1000, duration: 0.3}) 
+    .from('.news-list li:nth-child(3)', {opacity: 0, x: 1000, duration: 0.3}) 
 
 
 /* 인재채용 */
