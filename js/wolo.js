@@ -60,13 +60,19 @@ section.forEach(section => {
 });
 
 /* 메인비주얼 */
+const progressBar = document.querySelector('.main-swiper .bar');
+const playBtn = document.querySelector('.swiper-controls .btn-play');
+const stopBtn = document.querySelector('.swiper-controls .btn-stop');
+let progressTimeout;
+let pausedAt = 0;
+let animationDuration = 3000;
 
-// const btnPlayStop = document.querySelector('.btn-play-stop');
-// let isPlaying = true;
+// document.documentElement.style.setProperty('--animationDuration',`${animationDuration}ms`);
+
 // const swiper = new Swiper('.main-swiper', {
 //   loop: true,
 //   autoplay: {
-//     delay: 5000,
+//     delay: animationDuration,
 //     disableOnInteraction: false,
 //   },
 //   pagination: {
@@ -81,18 +87,58 @@ section.forEach(section => {
 //   }
 // });
 
-// btnPlayStop.addEventListener('click', playStop)
-// function playStop() {
-//   const vidioBar = document.querySelector('.main-swiper .bar');
-//   if(isPlaying) {
-//     btnPlayStop.innerHTML = '<i class="ri-play-circle-line"></i>';
-//     swiper.autoplay.pause();
-//   } else {
-//     btnPlayStop.innerHTML = '<i class="ri-pause-circle-line"></i>';
-//     swiper.autoplay.resume();
-//   }
-//   isPlaying = !isPlaying
-// }
+const mainSwiper = new Swiper('.main-swiper', {
+    autoplay: {delay: animationDuration},
+    effect: 'fade',
+    loop: true,
+    pagination: {
+        el: '.pagination-progress',
+        type: 'custom',
+        renderCustom: function (swiper, current, total) {
+          return `<span class="">0${current}</span><div class="progress"><div class="bar"></div></div><span>0${total}</span>`;
+        },
+    // on: {
+    //     init: () => {resetProgressBar()},
+    //     slideChangeTransitionStart: () => {
+    //         resetProgressBar()
+    //     }
+    }
+});
+
+let pagingSwiper = new Swiper(".main-swiper", {
+	pagination: {
+		el: '.pagination-bullet',
+		type : 'bullets',
+    clickable: true,
+	},
+});
+
+
+
+
+function resetProgressBar() {
+    progressBar.style.animation = 'none';
+    progressBar.offsetHeight;
+    progressBar.style.animation = `progress ${animationDuration}ms linear`;
+    progressTimeout = setTimeout(() => {}, animationDuration)
+}
+/*
+playBtn.addEventListener('click', () => {
+    // progressBar.style.animationPlayState = 'running';
+    mainSwiper.autoplay.start();
+    stopBtn.style.display = 'block';
+    playBtn.style.display = 'none';
+});
+
+stopBtn.addEventListener('click', () => {
+    // progressBar.style.animationPlayState = 'paused';
+    mainSwiper.autoplay.stop();
+    stopBtn.style.display = 'none';
+    playBtn.style.display = 'block'; 
+});
+*/
+
+
 
 
 /* 판매량 */
@@ -133,13 +179,20 @@ function countUp(selector, target, duration = 1500) {
 /* 히스토리 */
 /* 브랜드 */
 
-gsap.from('.brand-list', {
-    scale: 0,duration: 0.5,
-    scrollTrigger: {
-      trigger: '.brand-box',
-      start: 'top 40%',
-    }
+
+const brand = gsap.utils.toArray('.brand-list');
+
+brand.forEach(brand => {
+    gsap.from(brand, {
+        y: 100, opacity: 0, delay: 1.5, duration: 1,
+        scrollTrigger: {
+            trigger: 'brand-list',
+            start: 'top 30%',
+        }
+    })
 });
+
+
 
 /* 비전 */
 
@@ -158,7 +211,7 @@ gsap.to('.ani-img', {
     scale: 1.7,y: 760,x: -840,
     scrollTrigger: {
       trigger: '.small-img',
-      start: 'top 80',
+      start: 'top 80%',
       scrub: true
     }
 });
@@ -176,4 +229,15 @@ vis3.from('.way-1p img', {scale: 0.95,opacity: 0})
 
 
 /* 뉴스 */
+
+gsap.from('.news-list', {
+    opacity: 0, x: 1000,
+    scrollTrigger: {
+      trigger: '.news',
+      start: 'top 40%',
+      // markers: true
+    }
+});
+
+
 /* 인재채용 */
