@@ -72,7 +72,7 @@ const mainSwiper = new Swiper('.main-swiper', {
         el: '.pagination-progress',
         type: 'custom',
         renderCustom: function (swiper, current, total) {
-          return `<span class="">0${current}</span><div class="progress"><div class="bar"></div></div><span>0${total}</span>`;
+          return `<span class="">0${current}</span> / <span>0${total}</span> <div class="progress"><div class="bar"></div></div>`;
         },
     // on: {
     //     init: () => {resetProgressBar()},
@@ -100,21 +100,21 @@ function resetProgressBar() {
     progressTimeout = setTimeout(() => {}, animationDuration)
 }
 */
-/*
+
 playBtn.addEventListener('click', () => {
     // progressBar.style.animationPlayState = 'running';
-    mainSwiper.autoplay.start();
+    pagingSwiper.autoplay.start();
     stopBtn.style.display = 'block';
     playBtn.style.display = 'none';
 });
 
 stopBtn.addEventListener('click', () => {
     // progressBar.style.animationPlayState = 'paused';
-    mainSwiper.autoplay.stop();
+    pagingSwiper.autoplay.stop();
     stopBtn.style.display = 'none';
     playBtn.style.display = 'block'; 
 });
-*/
+
 
 
 

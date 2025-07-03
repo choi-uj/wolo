@@ -350,18 +350,18 @@ header.scroll .header-util {color: #333;}
 .swiper-controls .pagination-bullet {
     position: absolute;left: 85%;
     display: flex;flex-direction: row;
-    gap: 1rem;width: 10rem;
-    
+    gap: 1rem;width: 12rem;justify-content: center;    
 }
 .swiper-controls .pagination-bullet span {
-    
     width: 1.5rem;height: 1.5rem;border-radius: 50%;
     background: var(--orange);
 }
 
-/* 
+
 .swiper-controls button {
+    position: absolute;left: 32%;
     font-size: 3rem;font-weight: 500;cursor: pointer;
+    /* border: 1px solid #ff0000; */
 }
 .swiper-controls .btn-play {
     display: none;
@@ -374,7 +374,7 @@ header.scroll .header-util {color: #333;}
 }
 .swiper-controls .btn-stop::after {
     content: "\EFD6";font-family: 'remixicon';
-} */
+}
 
 
 
@@ -756,11 +756,11 @@ header.scroll .header-util {color: #333;}
 .hiring hgroup p {padding-top: 2rem;}
 .hiring .go-btn {
     position: absolute;top: 75%;left: 45%;z-index: 1;
-    display: flex;
+    display: flex;border: none;
     background: #fff;
 }
 .hiring .go-btn:hover {
-    background: var(--blue);
+    background: var(--blue);border: none;
 }
 
 @media screen and (max-width: 1180px) {
