@@ -329,26 +329,8 @@ header.scroll .header-util {color: #333;}
   
     
 }
-.swiper-controls .pagination-progress {
-    position: absolute;left: 20rem;
-    display: flex;align-items: center;
-    font-size: 1.6rem;gap: 1rem;color: #fff;
-    width: 20%;
-}
-
-.main-swiper .progress {
-  width: 300px;height: 3px;background: rgba(255,255,255,0.3);
-  border-radius: 2px;
-}
-.main-swiper .bar {
-  height: 100%;background: #FFF;
-  border-radius: 2px;
-  animation: progress var(--animationDuration) linear;
-}
-
-
 .swiper-controls .pagination-bullet {
-    position: absolute;left: 85%;
+    position: absolute;left: 23rem;
     display: flex;flex-direction: row;
     gap: 1rem;width: 12rem;justify-content: center;    
 }
@@ -359,9 +341,8 @@ header.scroll .header-util {color: #333;}
 
 
 .swiper-controls button {
-    position: absolute;left: 32%;
+    position: absolute;left: 20rem;
     font-size: 3rem;font-weight: 500;cursor: pointer;
-    /* border: 1px solid #ff0000; */
 }
 .swiper-controls .btn-play {
     display: none;

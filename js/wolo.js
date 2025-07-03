@@ -60,57 +60,39 @@ section.forEach(section => {
 });
 
 /* 메인비주얼 */
-const progressBar = document.querySelector('.main-swiper .bar');
 const playBtn = document.querySelector('.swiper-controls .btn-play');
 const stopBtn = document.querySelector('.swiper-controls .btn-stop');
 let progressTimeout;
-let pausedAt = 0;
 let animationDuration = 3000;
 
-const mainSwiper = new Swiper('.main-swiper', {
-    pagination: {
-        el: '.pagination-progress',
-        type: 'custom',
-        renderCustom: function (swiper, current, total) {
-          return `<span class="">0${current}</span> / <span>0${total}</span> <div class="progress"><div class="bar"></div></div>`;
-        },
-    // on: {
-    //     init: () => {resetProgressBar()},
-    //     slideChangeTransitionStart: () => {
-    //         resetProgressBar()
-    //     }
-    }
-});
-
-let pagingSwiper = new Swiper(".main-swiper", {
-    autoplay: {delay: animationDuration},
-    effect: 'fade',
-    loop: true,
+const mainSwiper = new Swiper(".main-swiper", {
 	pagination: {
+        autoplay: {delay: animationDuration},
+        effect: 'fade',
+        loop: true,
 		el: '.pagination-bullet',
 		type : 'bullets',
     clickable: true,
 	},
 });
-/*
+
+
 function resetProgressBar() {
     progressBar.style.animation = 'none';
     progressBar.offsetHeight;
     progressBar.style.animation = `progress ${animationDuration}ms linear`;
     progressTimeout = setTimeout(() => {}, animationDuration)
 }
-*/
+
 
 playBtn.addEventListener('click', () => {
-    // progressBar.style.animationPlayState = 'running';
-    pagingSwiper.autoplay.start();
+    mainSwiper.autoplay.start();
     stopBtn.style.display = 'block';
     playBtn.style.display = 'none';
 });
 
 stopBtn.addEventListener('click', () => {
-    // progressBar.style.animationPlayState = 'paused';
-    pagingSwiper.autoplay.stop();
+    mainSwiper.autoplay.stop();
     stopBtn.style.display = 'none';
     playBtn.style.display = 'block'; 
 });
@@ -191,25 +173,28 @@ brand.forEach(brand => {
 
 /* 비전 */
 
-gsap.from('.small-img', {
-    x: 2000,
-    duration: 3,
-    scrollTrigger: {
-      trigger: '.way-main',
-      start: 'top 60%',
-      end: 'bottom 80%',
-      scrub: true
+const vis1 = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.way-main',
+        start: 'top 60%',
+        end: 'bottom 80%',
+        // scrub: true
     }
 });
+vis1.from('.small-img img:nth-child(1)', {x: 2000})    
+   .from('.small-img img:nth-child(2)', {x: 2000})   
+   .from('.small-img .ani-img', {x: 2000}) 
+   .to('.small-img .ani-img', {delay: 1,scale: 1.7,y: 760,x: -840,duration: 1})   
 
-gsap.to('.ani-img', {
-    scale: 1.7,y: 760,x: -840,
-    scrollTrigger: {
-      trigger: '.small-img',
-      start: 'top 80%',
-      scrub: true
-    }
-});
+
+// gsap.to('.ani-img', {
+//     scale: 1.7,y: 760,x: -840,
+//     scrollTrigger: {
+//       trigger: '.small-img',
+//       start: 'top 80%',
+//       scrub: true
+//     }
+// });
 
 const vis3 = gsap.timeline({
   scrollTrigger: {
