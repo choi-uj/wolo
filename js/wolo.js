@@ -173,38 +173,33 @@ brand.forEach(brand => {
 
 /* 비전 */
 
-const vis1 = gsap.timeline({
-  scrollTrigger: {
-        trigger: '.way-main',
-        start: 'top 60%',
-        end: 'bottom 80%',
-        // scrub: true
-    }
-});
-vis1.from('.small-img img:nth-child(1)', {x: 2000})    
-   .from('.small-img img:nth-child(2)', {x: 2000})   
-   .from('.small-img .ani-img', {x: 2000}) 
-   .to('.small-img .ani-img', {delay: 1,scale: 1.7,y: 760,x: -840,duration: 1})   
+const swiperVision = new Swiper(".way-swiper", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
 
 
-// gsap.to('.ani-img', {
-//     scale: 1.7,y: 760,x: -840,
-//     scrollTrigger: {
-//       trigger: '.small-img',
-//       start: 'top 80%',
-//       scrub: true
-//     }
-// });
 
-const vis3 = gsap.timeline({
+
+const way1p = gsap.timeline({
   scrollTrigger: {
         trigger: '.way-1p',
         start: 'top 30%'
     }
 });
-vis3.from('.way-1p img', {scale: 0.95,opacity: 0})    
-    .to('.ani-img', {opacity: 0})
+way1p.from('.way-1p img', {scale: 0.95,opacity: 0})
     .from('.way-1p .txt', {opacity: 0, x: 1000})
+
+const way2p = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.way-2p',
+        start: 'top 30%'
+    }
+});
+way2p.from('.way-2p img', {scale: 0.95,opacity: 0})
+    .from('.way-2p .txt', {opacity: 0, x: -1000})
     
 
 
