@@ -543,15 +543,12 @@ header.scroll .header-util {color: #333;}
     .way-swiper .swiper-slide-thumb-active {
       opacity: 1;
     }
-
     .swiper-slide img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-
 .way-1p {
     display: flex;flex-direction: row;gap: 10rem;
     padding: 10rem 0;
