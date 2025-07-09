@@ -169,24 +169,20 @@ brand.forEach(brand => {
 });
 
 
-
-
 /* 비전 */
 
 const swiperVision = new Swiper(".way-swiper", {
-        spaceBetween: 10,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesProgress: true,
+        loop: true,
+        autoplay: {delay: 0},
+        slidesPerView: 'auto',
+        speed: 4000,
+        spaceBetween: 40,
     });
-
-
-
 
 const way1p = gsap.timeline({
   scrollTrigger: {
         trigger: '.way-1p',
-        start: 'top 30%'
+        start: 'top 50%'
     }
 });
 way1p.from('.way-1p img', {scale: 0.95,opacity: 0})
@@ -195,7 +191,7 @@ way1p.from('.way-1p img', {scale: 0.95,opacity: 0})
 const way2p = gsap.timeline({
   scrollTrigger: {
         trigger: '.way-2p',
-        start: 'top 30%'
+        start: 'top 50%'
     }
 });
 way2p.from('.way-2p img', {scale: 0.95,opacity: 0})
