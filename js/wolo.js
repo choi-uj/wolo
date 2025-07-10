@@ -4,6 +4,10 @@ gsap.registerPlugin(ScrollTrigger)
 const headerGnb = document.querySelector('#gnb')
 const header = document.querySelector('header')
 const gnbDep1 = document.querySelectorAll('#gnb .dep1>li')
+const menu = document.querySelector('.header-util .menu-wrap');
+const langWrap = document.querySelector('.header-util .lang-wrap')
+const langBtn = document.querySelector('.header-util .lang-wrap button')
+
 
 headerGnb.addEventListener('mouseenter', function() {
   header.classList.add('scroll-a')
@@ -13,7 +17,8 @@ headerGnb.addEventListener('mouseleave', function() {
     header.classList.remove('scroll-a')
     if(window.scrollY >= header.offsetHeight) {
         header.classList.add('scroll');
-    } else {
+    } 
+    else {
         header.classList.remove('scroll')
     }
 
@@ -27,14 +32,26 @@ window.addEventListener('scroll',() => {
     }
 })
 
-
-
-const langWrap = document.querySelector('.header-util .lang-wrap')
-const langBtn = document.querySelector('.header-util .lang-wrap button')
 langBtn.addEventListener('click', () => {
     langWrap.classList.toggle('active');
 })
 
+
+menu.addEventListener('click',function(){
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        if(window.scrollY >= header.offsetHeight) {
+            header.classList.add('scroll')
+        } else {
+            header.classList.remove('scroll')
+        }
+        header.classList.remove('scroll-a');
+    } else {
+        menu.classList.add('open');
+        header.classList.add('scroll');
+        header.classList.add('scroll-a');
+    }
+});
 
 
 

@@ -47,7 +47,6 @@ hgroup p {margin-top: 3rem;
 
 @media screen and (max-width: 1440px) {
     .container {padding: 8rem;}
-    
 }
 @media screen and (max-width: 1440px) {
     hgroup strong {font-size: 5rem;line-height: 6rem;}
@@ -111,6 +110,7 @@ hgroup p {margin-top: 3rem;
 
 .header-util {
     display: flex;flex-direction: row;
+    align-items: center;
     gap: 3rem;font-size: 2.4rem;
 }
 .header-util .lang-wrap {position: relative;}
@@ -127,7 +127,35 @@ hgroup p {margin-top: 3rem;
 .header-util .lang-wrap.active ul {display: flex;}
 .header-util .lang-wrap li:hover {color: var(--orange);}
 
-.allmenu-wrap .allmenu-popup {display: none;}
+.header-util .menu-wrap{
+    position: relative;width: 28px;height: 16px;
+    cursor: pointer;
+}
+.header-util .menu-wrap .line{
+    position: absolute;width: 100%;height: 2px;
+    border-radius: 2px;background: #fff;left: 0;
+}
+.header-util .menu-wrap .line:nth-child(1) {
+    top: 0;transform-origin: 25% 50%;transition: .3s;
+}
+.header-util .menu-wrap .line:nth-child(2) {
+    top: calc(50% - 1px);left: 30%;width: 70%;
+}
+.header-util .menu-wrap .line:nth-child(3) {
+    bottom: 0;transform-origin: 25% 50%;transition: .3s;
+}
+
+
+.header-util .menu-wrap.open .line:first-child{
+    transform: rotate(45deg) translateX(10%);background: #333;
+}
+.header-util .menu-wrap.open .line:nth-child(2){
+    opacity: 0;
+}
+.header-util .menu-wrap.open .line:last-child{
+    transform: rotate(-45deg) translateX(10%);background: #333;
+}
+
 
 /* scroll */
 
@@ -151,17 +179,18 @@ header.scroll-a #gnb .dep2 {
     color: #999;
 }
 header.scroll .header-util {color: #333;}
-
-
-
+header.scroll .menu-wrap .line {background: #333;}
 
 @media screen and (max-width: 1440px) {
+    #header .container {padding: 0 8rem;}
     #gnb {display: none;}
+    header.scroll-a::before {height: 40rem;}
 }
 @media screen and (max-width: 800px) {
-    #header .container {height: 9rem;}
+    #header .container {
+        padding: 0 5rem;height: 9rem;
+    }
 }
-
 
 /* footer */
 #footer {padding-top: 10rem;}
