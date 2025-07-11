@@ -8,21 +8,24 @@ const menu = document.querySelector('.header-util .menu-wrap');
 const langWrap = document.querySelector('.header-util .lang-wrap')
 const langBtn = document.querySelector('.header-util .lang-wrap button')
 
+const hBreakpoint = 1440;
+if (window.innerWidth > hBreakpoint) {
+    headerGnb.addEventListener('mouseenter', function() {
+        header.classList.add('scroll-a')
+        header.classList.add('scroll')
+    });
+    headerGnb.addEventListener('mouseleave', function() {
+        header.classList.remove('scroll-a')
+        if(window.scrollY >= header.offsetHeight) {
+            header.classList.add('scroll');
+        } 
+        else {
+            header.classList.remove('scroll')
+        }
+    });
+}
 
-headerGnb.addEventListener('mouseenter', function() {
-  header.classList.add('scroll-a')
-  header.classList.add('scroll')
-});
-headerGnb.addEventListener('mouseleave', function() {
-    header.classList.remove('scroll-a')
-    if(window.scrollY >= header.offsetHeight) {
-        header.classList.add('scroll');
-    } 
-    else {
-        header.classList.remove('scroll')
-    }
 
-});
 window.addEventListener('scroll',() => {
     console.log(window.scrollY);
     if(window.scrollY >= header.offsetHeight) {
@@ -53,7 +56,7 @@ menu.addEventListener('click',function(){
     }
 });
 
-
+window.addEventListener('resize', checkScreenSize);
 
 /* 푸터 */
 const familyBtn = document.querySelector('.family-link .family-site button')

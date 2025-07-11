@@ -76,8 +76,7 @@ hgroup p {margin-top: 3rem;
     backdrop-filter: blur(8px);
 }
 #header .container {
-    display: flex;flex-direction: row;justify-content: space-between;padding: 0 20rem;
-    align-items: center;height: 8rem;
+    display: flex;flex-direction: row;justify-content: space-between;padding: 0 20rem;align-items: center;height: 8rem;
 }
 #header h1 a {
     display: block;
@@ -87,8 +86,11 @@ hgroup p {margin-top: 3rem;
     /* border: 1px solid #f10000; */
 }
 #gnb .dep1 {display: flex;flex-direction: row;}
-#gnb .dep1 li {padding: 3rem 4rem;position: relative;}
-#gnb .dep1>li>a {font-weight: 700;font-size: 2rem;}
+#gnb .dep1 li {position: relative;}
+#gnb .dep1>li>a {
+    padding: 2.8rem 4rem;
+    font-weight: 700;font-size: 2rem;
+}
 #gnb .dep1>li:hover {color: var(--orange);}
 #gnb .dep1>li:hover>a {
     text-decoration: underline var(--orange) 0.4rem;
@@ -100,7 +102,7 @@ hgroup p {margin-top: 3rem;
     flex-direction: column;
     justify-self: center;align-items: center;
     position: absolute;height: 1px;width: 12rem;
-    top: 8rem;left: 0;right: 0;color: #999;
+    top: 4rem;left: 0;right: 0;color: #999;
     overflow: hidden;transition: all 0.3s;
 }
 #gnb .dep2 li {padding: 2rem 0;}
@@ -184,7 +186,21 @@ header.scroll .menu-wrap .line {background: #333;}
 @media screen and (max-width: 1440px) {
     #header .container {padding: 0 8rem;}
     #gnb {display: none;}
+    header.scroll-a {position: relative;}
     header.scroll-a::before {height: 40rem;}
+    header.scroll-a #gnb {
+        position: absolute;
+        display: flex;padding-top: 20rem;
+        justify-content: center;align-items: center;width: 100vw;margin-left: -8rem;
+    }
+    #gnb .dep1 li {
+        text-align: center;width: 20rem;
+        /* border: 1px solid #00ff95; */
+    }
+    #gnb .dep1>li>a {
+        width: 100%;padding: 2rem 4rem;
+        /* border: 1px solid #ff0000; */
+    }
 }
 @media screen and (max-width: 800px) {
     #header .container {
