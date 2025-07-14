@@ -7,9 +7,12 @@ const gnbDep1 = document.querySelectorAll('#gnb .dep1>li')
 const menu = document.querySelector('.header-util .menu-wrap');
 const langWrap = document.querySelector('.header-util .lang-wrap')
 const langBtn = document.querySelector('.header-util .lang-wrap button')
-
+/** 
+window.innerWidth
+마우스오버 이벤트 => 버튼은 예외
+*/
 const hBreakpoint = 1440;
-if (window.innerWidth > hBreakpoint) {
+if (window.innerWidth >= hBreakpoint) {
     headerGnb.addEventListener('mouseenter', function() {
         header.classList.add('scroll-a')
         header.classList.add('scroll')
@@ -23,7 +26,7 @@ if (window.innerWidth > hBreakpoint) {
             header.classList.remove('scroll')
         }
     });
-}
+} 
 
 
 window.addEventListener('scroll',() => {
@@ -39,8 +42,8 @@ langBtn.addEventListener('click', () => {
     langWrap.classList.toggle('active');
 })
 
-
-menu.addEventListener('click',function(){
+if (window.innerWidth < hBreakpoint) {
+    menu.addEventListener('click',function(){
     if (menu.classList.contains('open')) {
         menu.classList.remove('open');
         if(window.scrollY >= header.offsetHeight) {
@@ -55,6 +58,8 @@ menu.addEventListener('click',function(){
         header.classList.add('scroll-a');
     }
 });
+}
+
 
 window.addEventListener('resize', checkScreenSize);
 
