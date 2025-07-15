@@ -218,13 +218,16 @@ header.scroll .menu-wrap .line {background: #333;}
     #gnb .dep1>li>a {padding: 2rem;}
     #gnb .dep2 {
         position: absolute;
-        display: flex;flex-direction: row;padding: 0 4rem;
-        top: 5rem;
-        width: 50rem;
+        display: flex;flex-direction: row;padding: 0;
+        align-items: start;justify-content: start;
+        top: 5rem;gap: 20%;margin-left: 4rem;
+        width: 70vw;
+        /* border: 1px solid #ff0000; */
     }
     header.scroll-a #gnb .dep2 {height: 8rem;
     }
     #gnb .dep2 li {
+        justify-content: space-between;
         text-align: start;width: 10rem;padding: 2rem 0;
     }
     #gnb .dep2 li a {padding: 2rem 0;}
