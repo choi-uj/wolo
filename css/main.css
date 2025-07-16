@@ -374,7 +374,11 @@ header.scroll .menu-wrap .line {background: #333;}
 }
 .main-visual hgroup {
     position: absolute;user-select: none;
+<<<<<<< HEAD
     top: 30rem;width: 70%;padding: 0 5rem;
+=======
+    top: 20%;width: 70%;padding: 0 5rem;
+>>>>>>> 62f15f9 (250716-1)
     left: 50%;transform: translateX(-50%);
     z-index: 10;color: #fff;
     /* border: 1px solid #ff0000; */
@@ -382,6 +386,7 @@ header.scroll .menu-wrap .line {background: #333;}
 .main-swiper {
     display: flex;
     /* display: none; */
+<<<<<<< HEAD
     width: 100vw;height: 100vh;
     color: #fff;
 }
@@ -403,6 +408,28 @@ header.scroll .menu-wrap .line {background: #333;}
     position: absolute;left: 23rem;
     display: flex;flex-direction: row;
     gap: 1rem;width: 12rem;justify-content: center;    
+=======
+    width: 100vw;height: 100vh;color: #fff;
+}
+.main-swiper video {
+    object-fit: cover;
+    width: 100%;height: 100%;
+}
+
+.main-swiper .swiper-controls {
+    position: absolute;top: 60%;left: 15%; z-index: 10;
+    display: flex;flex-direction: row;width: 70%;height: 10rem;
+    gap: 1rem;align-items: center;justify-content: center;  
+}
+.main-swiper .swiper-controls button {
+    position: absolute;
+    border: 1px solid #ff0000;
+}
+.swiper-controls .pagination-bullet {
+    display: flex;flex-direction: row;position: absolute;
+    gap: 1rem;width: 12rem;height: 3rem;justify-content: center;  
+    cursor: pointer;
+>>>>>>> 62f15f9 (250716-1)
 }
 .swiper-controls .pagination-bullet span {
     width: 1.5rem;height: 1.5rem;border-radius: 50%;
@@ -427,7 +454,18 @@ header.scroll .menu-wrap .line {background: #333;}
     content: "\EFD6";font-family: 'remixicon';
 }
 
+<<<<<<< HEAD
 
+=======
+@media screen and (max-width: 1280px) {
+    .main-visual {
+        padding: 0;
+    }
+    .main-visual hgroup {
+        padding: 0 5rem;width: 100vw;
+    }
+}
+>>>>>>> 62f15f9 (250716-1)
 
 
 /* 판매량 */
