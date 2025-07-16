@@ -381,56 +381,57 @@ header.scroll .menu-wrap .line {background: #333;}
 }
 .main-swiper {
     display: flex;
-    /* display: none; */
     width: 100vw;height: 100vh;
     color: #fff;
 }
 .main-swiper video {
     object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-.main-swiper .swiper-controls {
-    position: absolute;bottom: 8rem;z-index: 10;
-    display: flex;flex-direction: row;width: 100%;height: 3rem;
-    gap: 10px;align-items: center;justify-content: space-between;
-    /* border: 1px solid #ff0000; */
-}
-.swiper-controls .pagination-bullet {
-    position: absolute;left: 23rem;
-    display: flex;flex-direction: row;
-    gap: 1rem;width: 12rem;justify-content: center;
-    width: 100vw;height: 100vh;color: #fff;
-}
-.main-swiper video {
-    object-fit: cover;
     width: 100%;height: 100%;
 }
+.progress-bar {
+    position: absolute;top: 50%;left: 50%;
+    transform: translate(-50%, -50%);
+    height: 2px;width: 60%;
+    background: rgba(255, 255, 255, 0.3);
+    overflow: hidden;z-index: 15;
+}
+.progress-bar::after {
+    content: '';display: flex;
+    height: 100%;width: 0%;background: #fff;
+    animation: progress 3s linear infinite;
+}
+.progress-inner {
+    height: 100%;width: 0%;
+    background: #fff;transition: width 0.5s ease;
+}
 
+@keyframes progress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
 .main-swiper .swiper-controls {
     position: absolute;top: 60%;left: 15%; z-index: 10;
-    display: flex;flex-direction: row;width: 70%;height: 10rem;
+    display: flex;flex-direction: row;width: 70%;height: 5rem;
     gap: 1rem;align-items: center;justify-content: center;  
 }
-.main-swiper .swiper-controls button {
-    position: absolute;
-    border: 1px solid #ff0000;
-}
-.swiper-controls .pagination-bullet {
-    display: flex;flex-direction: row;position: absolute;
+.swiper-controls .swiper-pagination {
+    display: flex;flex-direction: row;position: relative;
     gap: 1rem;width: 12rem;height: 3rem;justify-content: center;  
-    cursor: pointer;
+    cursor: pointer;left: 0;    
 }
-.swiper-controls .pagination-bullet span {
+.swiper-controls .swiper-pagination span {
     width: 1.5rem;height: 1.5rem;border-radius: 50%;
-    background: var(--orange);
+    background: var(--orange, #555);opacity: 0.5;
 }
-
+.swiper-pagination-bullet-active {
+    opacity: 1;background-color: var(--orange);
+}
 
 .swiper-controls button {
-    position: absolute;left: 20rem;
     font-size: 3rem;font-weight: 500;cursor: pointer;
+    display: flex;justify-content: center;align-items: center;
+    width: 50px;height: 50px;
+    border-radius: 50%;z-index: 20;
 }
 .swiper-controls .btn-play {
     display: none;
@@ -439,7 +440,7 @@ header.scroll .menu-wrap .line {background: #333;}
     content: "\F009";font-family: 'remixicon';
 }
 .swiper-controls .btn-stop {
-    display: block;
+    display: flex;
 }
 .swiper-controls .btn-stop::after {
     content: "\EFD6";font-family: 'remixicon';

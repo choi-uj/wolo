@@ -61,7 +61,7 @@ if (window.innerWidth < hBreakpoint) {
 }
 
 
-window.addEventListener('resize', checkScreenSize);
+// window.addEventListener('resize', checkScreenSize);
 
 /* 푸터 */
 const familyBtn = document.querySelector('.family-link .family-site button')
@@ -85,41 +85,36 @@ section.forEach(section => {
 });
 
 /* 메인비주얼 */
-const playBtn = document.querySelector('.swiper-controls .btn-play');
-const stopBtn = document.querySelector('.swiper-controls .btn-stop');
+const totalSlides = document.querySelectorAll('.swiper-slide').length;
+console.log('슬라이드 개수:', totalSlides);
 let progressTimeout;
 let animationDuration = 3000;
+const playBtn = document.querySelector('.btn-play');
+const stopBtn = document.querySelector('.btn-stop');
 
+document.addEventListener("DOMContentLoaded", () => {});
+    
 const mainSwiper = new Swiper(".main-swiper", {
-	pagination: {
-        autoplay: {delay: animationDuration},
-        effect: 'fade',
-        loop: true,
-		el: '.pagination-bullet',
-		type : 'bullets',
-    clickable: true,
-	},
+loop: true,
+autoplay: { delay: animationDuration, disableOnInteraction: false },
+pagination: { el: '.swiper-pagination', clickable: true },
+effect: 'slide',
+observer: true, observeParents: true,
+on: { slideChangeTransitionEnd: ensurePlay }
 });
 
-// function resetProgressBar() {
-//     progressBar.style.animation = 'none';
-//     progressBar.offsetHeight;
-//     progressBar.style.animation = `progress ${animationDuration}ms linear`;
-//     progressTimeout = setTimeout(() => {}, animationDuration)
-// }
-
-
 playBtn.addEventListener('click', () => {
-    mainSwiper.autoplay.start();
+    mainSwiper.autoplay.start(); 
     stopBtn.style.display = 'flex';
     playBtn.style.display = 'none';
 });
 
 stopBtn.addEventListener('click', () => {
-    mainSwiper.autoplay.stop();
+    mainSwiper.autoplay.stop(); 
     stopBtn.style.display = 'none';
     playBtn.style.display = 'flex'; 
 });
+
 
 
 
