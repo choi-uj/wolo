@@ -101,42 +101,24 @@ const mainSwiper = new Swiper(".main-swiper", {
 	},
 });
 
-
-<<<<<<< HEAD
-function resetProgressBar() {
-    progressBar.style.animation = 'none';
-    progressBar.offsetHeight;
-    progressBar.style.animation = `progress ${animationDuration}ms linear`;
-    progressTimeout = setTimeout(() => {}, animationDuration)
-}
-=======
 // function resetProgressBar() {
 //     progressBar.style.animation = 'none';
 //     progressBar.offsetHeight;
 //     progressBar.style.animation = `progress ${animationDuration}ms linear`;
 //     progressTimeout = setTimeout(() => {}, animationDuration)
 // }
->>>>>>> 62f15f9 (250716-1)
 
 
 playBtn.addEventListener('click', () => {
     mainSwiper.autoplay.start();
-<<<<<<< HEAD
-    stopBtn.style.display = 'block';
-=======
     stopBtn.style.display = 'flex';
->>>>>>> 62f15f9 (250716-1)
     playBtn.style.display = 'none';
 });
 
 stopBtn.addEventListener('click', () => {
     mainSwiper.autoplay.stop();
     stopBtn.style.display = 'none';
-<<<<<<< HEAD
-    playBtn.style.display = 'block'; 
-=======
     playBtn.style.display = 'flex'; 
->>>>>>> 62f15f9 (250716-1)
 });
 
 
