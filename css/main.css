@@ -220,7 +220,7 @@ header.scroll .menu-wrap .line {background: #333;}
         position: absolute;
         display: flex;flex-direction: row;padding: 0;
         align-items: start;justify-content: start;
-        top: 5rem;gap: 20%;margin-left: 4rem;
+        top: 5rem;gap: 20%;margin-left: 6rem;
         width: 70vw;
         /* border: 1px solid #ff0000; */
     }
@@ -374,7 +374,7 @@ header.scroll .menu-wrap .line {background: #333;}
 }
 .main-visual hgroup {
     position: absolute;user-select: none;
-    top: 20%;width: 70%;padding: 0 5rem;
+    top: 30%;width: 70%;padding: 0 5rem;
     left: 50%;transform: translateX(-50%);
     z-index: 10;color: #fff;
     /* border: 1px solid #ff0000; */
@@ -388,43 +388,56 @@ header.scroll .menu-wrap .line {background: #333;}
     object-fit: cover;
     width: 100%;height: 100%;
 }
+
+.main-swiper .swiper-controls {
+    position: absolute;top: 55%;left: 50%;
+    transform: translateX(-50%);z-index: 10;
+    display: flex;flex-direction: column;width: 18rem;height: 10rem;
+    align-items: center;justify-content: space-between;  
+    
+}
 .progress-bar {
-    position: absolute;top: 50%;left: 50%;
-    transform: translate(-50%, -50%);
-    height: 2px;width: 60%;
+    width: 40vw;height: 1px;
     background: rgba(255, 255, 255, 0.3);
-    overflow: hidden;z-index: 15;
+    position: relative;overflow: hidden;
+    border-radius: 2px;
 }
-.progress-bar::after {
-    content: '';display: flex;
-    height: 100%;width: 0%;background: #fff;
-    animation: progress 3s linear infinite;
-}
+/* .progress-bar::after {
+    content: '';position: absolute;
+    left: 0;top: 0;
+    height: 100%;width: 100%;
+    background: var(--orange);
+    animation: progressAnim 3s linear infinite;
+} */
 .progress-inner {
-    height: 100%;width: 0%;
-    background: #fff;transition: width 0.5s ease;
+  height: 100%;width: 0%;
+  background: #fff;transition: width 0s;
 }
 
-@keyframes progress {
-    from { width: 0%; }
-    to { width: 100%; }
+@keyframes progressAnim {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
 }
-.main-swiper .swiper-controls {
-    position: absolute;top: 60%;left: 15%; z-index: 10;
-    display: flex;flex-direction: row;width: 70%;height: 5rem;
-    gap: 1rem;align-items: center;justify-content: center;  
+.swiper-controls .inner-controls {
+    display: flex;flex-direction: row;position: relative;
+    width: 100%;height: 100%;
+    align-items: center;justify-content: end;
 }
 .swiper-controls .swiper-pagination {
-    display: flex;flex-direction: row;position: relative;
-    gap: 1rem;width: 12rem;height: 3rem;justify-content: center;  
-    cursor: pointer;left: 0;    
+    display: flex;flex-direction: row;position: absolute;
+    top: 35%;
+    gap: 1.2rem;width: 12rem;height: 3rem;
+    justify-content: center;align-items: center;  
 }
 .swiper-controls .swiper-pagination span {
     width: 1.5rem;height: 1.5rem;border-radius: 50%;
-    background: var(--orange, #555);opacity: 0.5;
+    background: #fff;opacity: 0.3;
 }
-.swiper-pagination-bullet-active {
-    opacity: 1;background-color: var(--orange);
+.swiper-controls .swiper-pagination .swiper-pagination-bullet-active {
+    /* border: 1px solid var(--orange); */
+    background-color: #fff;
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 .swiper-controls button {
