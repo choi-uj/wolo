@@ -54,7 +54,7 @@ hgroup p {margin-top: 3rem;
 @media screen and (max-width: 800px) {
     :root {font-size: 9px;}
     main {margin-top: 9rem;}
-    .container {padding: 5rem;}
+    .container {padding: 5rem 3rem;}
     hgroup strong {font-size: 4rem;line-height: 4rem;}
 }
 
@@ -202,6 +202,7 @@ header.scroll .menu-wrap .line {background: #333;}
     }
 }
 @media screen and (max-width: 970px) {
+    #header .container {padding: 0 3rem;}
     header.scroll-a::before {height: 100vh;}
     header.scroll-a #gnb {
         display: flex;flex-direction: row;justify-content: center;
@@ -245,7 +246,8 @@ header.scroll .menu-wrap .line {background: #333;}
     gap: 1.3rem;line-height: 2.2rem;
 }
 #footer address .enter {display: none;}
-#footer address .contact {font-weight: 700;}
+#footer address .contact {font-weight: 700;line-height: 3rem;}
+#footer address .contact br {display: none;}
 #footer address .contact span {
     color: #999;margin-right: 3rem;
 }
@@ -337,7 +339,8 @@ header.scroll .menu-wrap .line {background: #333;}
     #footer .container {
         display: flex;flex-direction: column;
         justify-content: center;align-items: start;
-        gap: 2.5rem;padding-top: 2rem;padding-bottom: 0;
+        gap: 2.5rem;padding-top: 2rem;
+        padding: 2rem 3rem 0 3rem;
     }
     #footer address .enter {display: block;}
     .family-link {
@@ -345,7 +348,10 @@ header.scroll .menu-wrap .line {background: #333;}
         justify-content: space-between;
         width: 100%;
     }
-    #footer address .contact span {margin-right: 2rem;}
+    #footer address .contact br {display: block;}
+    #footer address .contact span:not(:first-child) {
+    margin-left: 0rem;
+    }
     .footer-under {
         flex-direction: column-reverse;
         padding: 0;padding-top: 3rem;margin: 0;
@@ -464,7 +470,8 @@ header.scroll .menu-wrap .line {background: #333;}
         padding: 0;
     }
     .main-visual hgroup {
-        padding: 0 5rem;width: 100vw;
+        top: 25%;
+        padding: 0 3rem;width: 100vw;
     }
 }
 
@@ -653,13 +660,11 @@ header.scroll .menu-wrap .line {background: #333;}
 @media screen and (max-width: 970px) {
     .brand .brand-box {
         display: flex;flex-direction: column;
-        padding: 0 3rem;
     }
     .brand .brand-list img {width: 20rem;}
     .brand .brand-list:hover img {width: 20rem;}
     .brand-box .brand-list h3 {display: none;}
     .brand-box .brand-list p {font-size: 1.8rem;}
-    
 }
 
 /* 비전 */
@@ -774,7 +779,7 @@ header.scroll .menu-wrap .line {background: #333;}
         font-size: 2.4rem;line-height: 3rem;
     }
     .way-1p .txt span, .way-2p .txt span {font-size: 1.8rem;}
-    .way-1p .txt, .way-2p .txt {padding: 5rem;}
+    .way-1p .txt, .way-2p .txt {padding: 5rem 3rem;}
 }
 
 /* 뉴스 */
@@ -851,9 +856,9 @@ header.scroll .menu-wrap .line {background: #333;}
         display: flex;flex-direction: column;
         padding: 3rem;
     }
-    .news .news-txt {width: 100vw;padding: 2rem 5rem;}
+    .news .news-txt {width: 100vw;padding: 2rem 3rem;}
     .news img {
-        width: calc(100vw - 10rem);height: 20rem;object-fit: cover;
+        width: calc(100vw - 6rem);height: 20rem;object-fit: cover;
     }
 }
 
@@ -890,6 +895,8 @@ header.scroll .menu-wrap .line {background: #333;}
 }
 
 @media screen and (max-width: 1180px) {
+    .hiring hgroup {padding: 0rem 3rem;}
+    .hiring hgroup strong br {display: none;}
     .hiring hgroup p br {display: none;}
 }
 
