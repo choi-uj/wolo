@@ -229,7 +229,8 @@ header.scroll .menu-wrap .line {background: #333;}
     }
     #gnb .dep2 li {
         justify-content: space-between;
-        text-align: start;width: 10rem;padding: 2rem 0;
+        text-align: start;width: 10rem;padding: 2rem 0;width: 10rem;
+    /* border: 1px solid #ff0000; */
     }
     #gnb .dep2 li a {padding: 2rem 0;}
 }
@@ -661,10 +662,18 @@ header.scroll .menu-wrap .line {background: #333;}
     .brand .brand-box {
         display: flex;flex-direction: column;
     }
+    .brand .brand-list {
+        width: 100%;
+    }
+    .brand .brand-list a {
+        width: 100%;padding: 4rem 3rem;
+    }
+    .brand .brand-list:hover a {padding: 4rem 3rem;}
     .brand .brand-list img {width: 20rem;}
     .brand .brand-list:hover img {width: 20rem;}
     .brand-box .brand-list h3 {display: none;}
-    .brand-box .brand-list p {font-size: 1.8rem;}
+    .brand-box .brand-list p {font-size: 1.8rem;width: 100%;}
+      .brand .brand-list:hover p {width: 100%;}
 }
 
 /* 비전 */
