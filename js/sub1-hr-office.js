@@ -93,3 +93,18 @@ const familyList = document.querySelector('.family-link .family-site')
 familyBtn.addEventListener('click', function() {
     familyList.classList.toggle('active')
 })
+
+
+/* 섹션 */
+const section = gsap.utils.toArray('#content section');
+// => Node List 형태의 유사 배열을 배열로 변환
+
+section.forEach(section => {
+    gsap.from(section, {
+        y: -100, opacity: 0, duration: 0.5,
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 70%',
+        }
+    })
+});

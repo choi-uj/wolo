@@ -296,7 +296,7 @@ const swiperVision = new Swiper(".way-swiper", {
         loop: true,
         autoplay: {delay: 0},
         slidesPerView: 'auto',
-        speed: 4000,
+        speed: 3000,
         spaceBetween: 40,
     });
 

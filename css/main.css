@@ -662,6 +662,7 @@ header.scroll .menu-wrap .line {background: #333;}
     .brand .brand-box {
         display: flex;flex-direction: column;
     }
+    .brand .container {padding: 10rem 3rem;}
     .brand .brand-list {
         width: 100%;
     }
