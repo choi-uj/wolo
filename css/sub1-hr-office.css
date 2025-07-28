@@ -41,18 +41,17 @@ p {font-size: 2.2rem;line-height: 4.4rem;}
 .go-btn:hover {
     background: var(--blue);color: #fff;
 }
+.br-m {display: none;}
 
 @media screen and (max-width: 1440px) {
     .container {padding: 8rem;}
 }
-@media screen and (max-width: 1440px) {
-    hgroup strong {font-size: 5rem;line-height: 6rem;}
-}
-@media screen and (max-width: 800px) {
-    :root {font-size: 9px;}
-    main {margin-top: 9rem;}
+@media screen and (max-width: 970px) {
     .container {padding: 5rem 3rem;}
-    hgroup strong {font-size: 4rem;line-height: 4rem;}
+    :root {font-size: 9px;}
+    h2 {font-size: 8rem;}
+    h3 {font-size: 5rem;}
+    .br-m {display: flex;}
 }
 
 /* #skip-nav a {
@@ -391,7 +390,9 @@ header.scroll .menu-wrap .line {background: #333;}
     width: 100%;
     border-bottom: 1px solid #ddd;
 }
-
+@media screen and (max-width: 800px) {
+    .sub-header .sub-main {gap: 2rem;}
+}
 
 
 /* work-env */
@@ -427,6 +428,14 @@ header.scroll .menu-wrap .line {background: #333;}
     gap: 2rem;width: calc(100% - 2rem);
 }
 
+@media screen and (max-width: 800px) {
+    .office1 {display: flex;flex-direction: column;}
+    .office1 .office-img {
+        width: 100%;height: 30rem;
+    }
+    .office1 img {height: 100%;}
+}
+
 /* office2 */
 .office2 {
     display: flex;flex-direction: row-reverse;
@@ -444,6 +453,17 @@ header.scroll .menu-wrap .line {background: #333;}
     display: flex;flex-direction: column;
     justify-content: center;text-align: right;
     gap: 2rem;width: calc(100% - 2rem);
+}
+
+@media screen and (max-width: 800px) {
+    .office2 {display: flex;flex-direction: column;}
+    .office2 .office-img {
+        width: 100%;height: 30rem;
+    }
+    .office2 img {height: 100%;}
+    .office2 .inner-text {
+        text-align: left;
+    }
 }
 
 /* welfare */
@@ -472,14 +492,33 @@ header.scroll .menu-wrap .line {background: #333;}
     border-bottom: 1px solid #ddd;
 }
 .welfare .wel-list .wel-m {
-    font-weight: 500;width: calc(20% - 3rem);
+    font-weight: 500;width: 20rem;
     font-size: 3rem;line-height: 5rem;
     color: var(--orange);
-    
 }
-
 .welfare .wel-list .wel-txt {
     width: calc(100% - 2rem);
+}
+
+@media screen and (max-width: 970px) {
+    .welfare {
+        display: flex;flex-direction: column;
+        gap: 8rem;
+    }
+    .welfare .wel-h {
+        justify-content: center;align-items: center;
+        width: 100%;
+    }
+    .welfare .wel-h>div {gap: 3rem;}
+}
+@media screen and (max-width: 600px) {
+    .welfare .wel-list {gap: 5rem;}
+    .welfare .wel-list li {
+        display: flex;flex-direction: column;
+        gap: 1rem;
+    }
+    .welfare .wel-list .wel-m {width: 100%;}
+    .welfare .wel-list .wel-m br {display: none;}
 }
 
 /* hiring */
@@ -507,7 +546,6 @@ header.scroll .menu-wrap .line {background: #333;}
     justify-content: center;align-items: center;
     gap: 5rem;color: #fff;
 }
-/* 텍스트 폰트 사이즈 임시 */
 .sub-hiring .hr-txt h4 {font-size: 6rem;font-weight: 700;}
 .sub-hiring .hr-inner {
     width: 100%;
@@ -517,6 +555,19 @@ header.scroll .menu-wrap .line {background: #333;}
 .sub-hiring .hr-inner p {font-size: 3rem;}
 .sub-hiring .hr-inner .go-btn {
     width: 30rem;background: #fff;
-    color: var(--deepblue);
+    /* color: var(--deepblue); */
+}
+.sub-hiring .hr-inner .go-btn:hover {
+    background: var(--blue);
+}
+
+@media screen and (max-width: 800px) {
+    .sub-hiring .hr-txt {gap: 4rem;}
+    .sub-hiring .hr-txt h4 {font-size: 5rem;}
+    .sub-hiring .hr-inner p {font-size: 2.6rem;}
+}
+@media screen and (max-width: 640px) {
+    .sub-hiring .hr-txt h4 {font-size: 3.6rem;}
+    .sub-hiring .hr-inner p {font-size: 2.4rem;}
 }
 
