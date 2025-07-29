@@ -229,8 +229,7 @@ header.scroll .menu-wrap .line {background: #333;}
     }
     #gnb .dep2 li {
         justify-content: space-between;
-        text-align: start;width: 10rem;padding: 2rem 0;width: 10rem;
-    /* border: 1px solid #ff0000; */
+        text-align: start;width: 10rem;padding: 2rem 0;
     }
     #gnb .dep2 li a {padding: 2rem 0;}
 }
@@ -399,40 +398,39 @@ header.scroll .menu-wrap .line {background: #333;}
 .main-swiper .swiper-controls {
     position: absolute;top: 55%;left: 50%;
     transform: translateX(-50%);z-index: 10;
-    display: flex;flex-direction: column;width: 18rem;height: 10rem;
-    align-items: center;justify-content: space-between;  
-    
+    display: flex;flex-direction: column;
+    width: 40rem; /* 부모 너비 */
+    height: 10rem;
+    align-items: center;
+    justify-content: center;
 }
-.progress-bar {
-    width: 40vw;height: 1px;
-    background: rgba(255, 255, 255, 0.3);
-    position: relative;overflow: hidden;
+.main-swiper .progress-bar {
+    width: 100%; /* 부모(18rem) 내에서 꽉 참 */
+    height: 1px;background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
-}
-/* .progress-bar::after {
-    content: '';position: absolute;
-    left: 0;top: 0;
-    height: 100%;width: 100%;
-    background: var(--orange);
-    animation: progressAnim 3s linear infinite;
-} */
-.progress-inner {
-  height: 100%;width: 0%;
-  background: #fff;transition: width 0s;
+    overflow: hidden;  /* 변경: overflow visible -> hidden */
+    position: relative;
 }
 
-@keyframes progressAnim {
+.main-swiper .progress-inner {
+    width: 0;height: 100%;
+    background: #fff;transition: width 0.1s ease;
+    position: absolute; /* 변경: relative -> absolute */
+    top: 0;left: 0;
+}
+
+/* @keyframes progressAnim {
     from { transform: translateX(-100%); }
     to { transform: translateX(100%); }
-}
+} */
 .swiper-controls .inner-controls {
     display: flex;flex-direction: row;position: relative;
-    width: 100%;height: 100%;
+    width: 50%;height: 100%;
     align-items: center;justify-content: end;
 }
 .swiper-controls .swiper-pagination {
     display: flex;flex-direction: row;position: absolute;
-    top: 35%;
+    top: 35%;left: 10%;
     gap: 1.2rem;width: 12rem;height: 3rem;
     justify-content: center;align-items: center;  
 }
@@ -681,7 +679,7 @@ header.scroll .menu-wrap .line {background: #333;}
 .way {background: #efefef;overflow-x: hidden;}
 .way-main {position: relative;height: 100%;padding: 10rem 0;}
 .way-swiper {width: 100%;height: 100%;margin: auto;}
-.swiper-wrapper {transition-timing-function: linear;}
+.way-swiper .swiper-wrapper {transition-timing-function: linear;}
 .way-swiper .swiper-slide {
     display: flex;flex-direction: row;
     justify-content: center;align-items: center;

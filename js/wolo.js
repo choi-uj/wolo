@@ -110,112 +110,109 @@ section.forEach(section => {
 });
 
 /* 메인비주얼 */
-const totalSlides = document.querySelectorAll('.swiper-slide').length;
-let progressTimeout;
-let animationDuration = 3000;
+const totalSlides = document.querySelectorAll('.main-swiper .swiper-slide:not(.swiper-slide-duplicate)').length;
+let progressTimeout;let animationDuration = 3000;
 const progressInner = document.querySelector('.progress-inner');
 let delay = 3000; // autoplay delay와 동일하게
 let mainSwiper;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const playBtn = document.querySelector('.btn-play');
-  const stopBtn = document.querySelector('.btn-stop');
+    const playBtn = document.querySelector('.btn-play');
+    const stopBtn = document.querySelector('.btn-stop');
 
-  mainSwiper = new Swiper('.main-swiper', {
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    on: {
-      init: function () {
-        playCurrentVideo(this);
-      },
-      slideChangeTransitionStart: function () {
-        pauseAllVideos();
-      },
-      slideChangeTransitionEnd: function () {
-        playCurrentVideo(this);
-      }
-    }
-  });
-
-  playBtn.addEventListener('click', () => {
-    console.log('재생 버튼 클릭');
-    mainSwiper.autoplay.start();
-    playCurrentVideo(mainSwiper);
-    playBtn.style.display = 'none';
-    stopBtn.style.display = 'flex';
-  });
-
-  stopBtn.addEventListener('click', () => {
-    console.log('정지 버튼 클릭');
-    mainSwiper.autoplay.stop();
-    pauseAllVideos();
-    playBtn.style.display = 'flex';
-    stopBtn.style.display = 'none';
-  });
-
-  function pauseAllVideos() {
-    document.querySelectorAll('.swiper-slide video').forEach(video => {
-      video.pause();
+    mainSwiper = new Swiper('.main-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        on: {
+            init: function () {
+                setTimeout(() => {
+                    playCurrentVideo(this);
+                    updateProgressBar(this);
+                }, 0);
+            },
+            slideChangeTransitionEnd: function () {
+                playCurrentVideo(this);
+                updateProgressBar(this);
+            }
+        }
     });
-  }
 
-  function playCurrentVideo(swiper) {
-    const currentSlide = swiper.slides[swiper.activeIndex];
-    const video = currentSlide.querySelector('video');
-    if (video) {
-    //   video.currentTime = 0; // 처음부터
-      video.play().catch(err => console.log('비디오 재생 오류:', err));
+    playBtn.addEventListener('click', () => {
+        // console.log('재생 버튼 클릭');
+        mainSwiper.autoplay.start();
+        playCurrentVideo(mainSwiper);
+        playBtn.style.display = 'none';
+        stopBtn.style.display = 'flex';
+    });
+
+    stopBtn.addEventListener('click', () => {
+        // console.log('정지 버튼 클릭');
+        mainSwiper.autoplay.stop();
+        pauseAllVideos();
+        playBtn.style.display = 'flex';
+        stopBtn.style.display = 'none';
+    });
+
+    function pauseAllVideos() {
+        document.querySelectorAll('.swiper-slide video').forEach(video => {
+        video.pause();
+        });
     }
-     }
 
-    // function resetProgressBar() {
-    // const progressBar = document.querySelector('.progress-bar::after');
-    // if (!progressBar) return;
-
-    // progressBar.style.animation = 'none';
-    // progressBar.offsetHeight; // 강제 리플로우
-    // progressBar.style.animation = null; // 애니메이션 다시 시작
-    // }
-
-    function startProgressBar() {
-        progressInner.style.transition = 'none';
-        progressInner.style.width = '0%';
-        // 리플로우 강제 → transition 초기화 후 시작
-        void progressInner.offsetWidth;
-
-        progressInner.style.transition = `width ${delay}ms linear`;
-        progressInner.style.width = '100%';
-    }
+    function playCurrentVideo(swiper) {
+        const currentSlide = swiper.slides[swiper.activeIndex];
+        const video = currentSlide.querySelector('video');
+        if (video) {
+        //   video.currentTime = 0; // 처음부터
+        video.play().catch(err => console.log('비디오 재생 오류:', err));
+        }
+        }
 
     function resetProgressBar() {
-    progressInner.style.transition = 'none';
-    progressInner.style.width = '0%';
+        progressInner.style.transition = 'none';
+        progressInner.style.width = '0%';
+        void progressInner.offsetWidth; // 강제 리플로우
     }
 
-    mainSwiper.on('slideChangeTransitionStart', () => {
-        resetProgressBar();
+    function startProgressBar(percent) {
+        progressInner.style.transition = `width ${delay}ms linear`;
+        progressInner.style.width = `${percent}%`;
+    }
+    // console.log('totalSlides:', totalSlides);
+    function updateProgressBar(swiper) {
+        let realIndex = swiper.realIndex % totalSlides;  // totalSlides 초과하면 모듈러 연산
+        if(realIndex < 0) realIndex += totalSlides;      // 음수 보정
+        const percent = ((realIndex + 1) / totalSlides) * 100;
+        console.log('Progress width set to:', percent, ' realIndex:', realIndex);
+        progressInner.style.transition = 'width 0.3s ease';
+        progressInner.style.width = `${percent}%`;
+    }
+
+    function updateProgressBar(swiper, correctedTotal = totalSlides) {
+        let realIndex = swiper.realIndex % correctedTotal;
+        if (realIndex < 0) realIndex += correctedTotal;
+        const percent = ((realIndex + 1) / correctedTotal) * 100;
+        // console.log('Progress width set to:', percent, ' realIndex:', realIndex);
+        progressInner.style.transition = 'width 0.3s ease';
+        progressInner.style.width = `${percent}%`;
+    }
+
+    mainSwiper.on('init', function () {
+        playCurrentVideo(this);
+        updateProgressBar(this); // ✅ 초기 프로그레스 반영
     });
 
-    mainSwiper.on('slideChangeTransitionEnd', () => {
-        startProgressBar();
+    mainSwiper.on('slideChangeTransitionEnd', function () {
+        // console.log('realIndex:', this.realIndex);
+        updateProgressBar(this);
     });
-
-    mainSwiper.on('autoplayStart', () => {
-       startProgressBar();
-    });
-
-    mainSwiper.on('autoplayStop', () => {
-       resetProgressBar();
-    });
-
-    // mainSwiper.on('slideChangeTransitionStart', resetProgressBar);
 });
 
 
