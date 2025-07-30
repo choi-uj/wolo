@@ -108,3 +108,56 @@ section.forEach(section => {
         }
     })
 });
+/* sub-header */
+const subHeader = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.sub-header',
+        start: 'top 70%'
+    }
+});
+subHeader.from('.sub-main h2', {y: -50,opacity: 0,duration: 0.3, delay: 0.3})
+        .from('.sub-main h3', {y: -50,opacity: 0,duration: 0.3})
+
+/* office */
+const office1 = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.office1',
+        start: 'top 50%'
+    }
+});
+office1.from('.office1 img', {scale: 0.5,opacity: 0})
+    .from('.office1 .inner-text', {opacity: 0, x: 1000})
+    .from('.office1 .inner-text h4', {opacity: 0, y: -50})
+
+const office2 = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.office2',
+        start: 'top 50%'
+    }
+});
+office2.from('.office2 img', {scale: 0.5,opacity: 0})
+    .from('.office2 .inner-text p', {opacity: 0, x: -1000})
+    .from('.office2 .inner-text h4', {opacity: 0, y: -50})
+    
+
+/* welfare */
+const welfare = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.welfare',
+        start: 'top 40%'
+    }
+});
+welfare.from('.wel-list li:nth-child(1)', {opacity: 0, x: 1000, duration: 0.4, delay: 0.5})    
+        .from('.wel-list li:nth-child(3)', {opacity: 0, x: 1000, duration: 0.4}) 
+        .from('.wel-list li:nth-child(5)', {opacity: 0, x: 1000, duration: 0.4}) 
+
+/* hiring */
+const hiring = gsap.timeline({
+  scrollTrigger: {
+        trigger: '.sub-hiring',
+        start: 'top 40%'
+    }
+});
+hiring.from('.sub-hiring .hr-txt h4', {opacity: 0, y: -50, duration: 0.4, delay: 0.5})    
+        .from('.sub-hiring .hr-inner p', {opacity: 0, y: -50, duration: 0.4}) 
+        .from('.sub-hiring .hr-inner .go-btn', {opacity: 0, y: -50, duration: 0.4}) 
