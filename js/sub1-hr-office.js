@@ -10,16 +10,13 @@ const hBreakpoint = 1440;
 
 // 메뉴 상태가 변경된 직후 DOM을 강제로 갱신하여 반영하도록 합니다.
 const updateMenuState = () => {
+    const isScrollActive = window.scrollY >= header.offsetHeight;
+    
     if (menu.classList.contains('open')) {
-        header.classList.add('scroll');
-        header.classList.add('scroll-a');
+        header.classList.add('scroll', 'scroll-a');
     } else {
+        header.classList.toggle('scroll', isScrollActive);
         header.classList.remove('scroll-a');
-        if (window.scrollY >= header.offsetHeight) {
-            header.classList.add('scroll');
-        } else {
-            header.classList.remove('scroll');
-        }
     }
 };
 
