@@ -221,17 +221,17 @@ header.scroll .menu-wrap .line {background: #333;}
         position: absolute;
         display: flex;flex-direction: row;padding: 0;
         align-items: start;justify-content: start;
-        top: 5rem;gap: 20%;margin-left: 6rem;
-        width: 70vw;
+        top: 5rem;margin-left: 6rem;
+        width: 90vw;
         /* border: 1px solid #ff0000; */
     }
     header.scroll-a #gnb .dep2 {height: 8rem;
     }
     #gnb .dep2 li {
-        justify-content: space-between;
-        text-align: start;width: 10rem;padding: 2rem 0;
+        justify-content: start;
+        text-align: start;padding: 2rem 0;width: calc(100% / 3);
     }
-    #gnb .dep2 li a {padding: 2rem 0;}
+    #gnb .dep2 li a {padding: 2rem 0;white-space: nowrap;}
 }
 
 /* footer */
